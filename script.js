@@ -1,16 +1,18 @@
 
 
-
+// credit w3schools.com for assistance with dynamic range sliders
 // Setting dynamic range sliders
-var slider = document.getElementById("number of characters");
+var slider = document.getElementById("number-of-characters");
 var output = document.getElementById("demo");
-output.innerHTML = slider.value; // Display the default slider value
+var num = []
+// Display the default slider value
+output.innerHTML = slider.value; 
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function () {
   output.innerHTML = this.value;
-  slider = slider.value;
-};
+  num = this.value;
+}
 
 
 var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
@@ -25,11 +27,24 @@ var available = letters.concat(numbers).concat(special).concat(upper);
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+  function setAvail () {
+    var lettersSet = document.getElementById("letters").getAttribute("value");
+    var numbersSet = document.getElementById("numbers").getAttribute("value");
+    var specialSet = document.getElementById("special-characters").getAttribute("value");
+    var upperSet = document.getElementById("upper-case").getAttribute("value");
+
+    lettersSet.addEventListener("onchange", function () {
+      if (lettersSet !== 0) {
+        
+      }
+    })
+  }
   function generatePassword() {
-    var password = []
-    for(var i=0; i < 8; i++) {
+    setAvail();
+    var password = [];
+    for(var i=0; i < num; i++) {
       password.push(available[Math.floor(Math.random() * available.length)]);
-    } return 
+    } return password;
   }
 
 // Write password to the #password input
@@ -41,10 +56,9 @@ function writePassword() {
 
 }
 
+// nOc.addEventListener("onchange", setNum());
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
 
 
 
