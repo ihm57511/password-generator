@@ -96,6 +96,21 @@ button[disabled] {
 #demo {
   color: rgb(16, 117, 252);
 }
+
+#letters,
+#numbers,
+#special-characters,
+#upper-case {
+  max-width: 34px;
+  margin-left: 340px;
+}
+
+.slidecontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .float-right {
   float: right;
 }
