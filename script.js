@@ -4,9 +4,16 @@
 // Setting dynamic range sliders
 var slider = document.getElementById("number-of-characters");
 var output = document.getElementById("demo");
-var num = []
+var num = 8
+var letterSet = 1
+var numberSet = 1
+var specialSet = 1
+var upperSet = 1
+
+
+
 // Display the default slider value
-output.innerHTML = slider.value; 
+output.innerHTML = slider.value;
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function () {
@@ -14,12 +21,28 @@ slider.oninput = function () {
   num = this.value;
 }
 
+var let = document.getElementById("letters");
+let.oninput = function () {
+  letterSet = this.value;
+}
+var numb = document.getElementById("numbers");
+numb.oninput = function () {
+  numberSet = this.value;
+}
+var spec = document.getElementById("special-characters");
+spec.oninput = function () {
+  specialSet = this.value;
+}
+var upp = document.getElementById("upper-case");
+upp.oninput = function () {
+  upperSet = this.value;
+}
 
-var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-var numbers = ["1","2","3","4","5","6","7","8","9","0"];
-var special = ["~","!","@","#","$","%","^","&","*","(",")"];
-var upper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var available = letters.concat(numbers).concat(special).concat(upper);
+var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+var special = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
+var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var available = [];
 
 
 
@@ -27,25 +50,59 @@ var available = letters.concat(numbers).concat(special).concat(upper);
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-  function setAvail () {
-    var lettersSet = document.getElementById("letters").getAttribute("value");
-    var numbersSet = document.getElementById("numbers").getAttribute("value");
-    var specialSet = document.getElementById("special-characters").getAttribute("value");
-    var upperSet = document.getElementById("upper-case").getAttribute("value");
+function setAvail() {
 
-    lettersSet.addEventListener("onchange", function () {
-      if (lettersSet !== 0) {
-        
-      }
-    })
+  function setLetters() {
+    if (letterSet === 1) {
+      available.unshift(letters)
+    }
   }
-  function generatePassword() {
-    setAvail();
-    var password = [];
-    for(var i=0; i < num; i++) {
-      password.push(available[Math.floor(Math.random() * available.length)]);
-    } return password;
+
+  function setNumbers() {
+    if (numberSet === 1) {
+      available.unshift(numbers)
+    }
   }
+
+  function setSpecial() {
+    if (specialSet === 1) {
+      available.unshift(special)
+    }
+  }
+
+  function setUpper() {
+    if (upperSet === 1) {
+      available.unshift(upper)
+    }
+  }
+
+  function setArray() {
+    return Array.from(available)
+  }
+
+  setLetters()
+  setNumbers()
+  setSpecial()
+  setUpper()
+  setArray()
+
+  console.log(available)
+  console.log(numberSet)
+  console.log(letterSet)
+  console.log(upperSet)
+  console.log(specialSet)
+
+
+
+}
+
+function generatePassword() {
+  setAvail();
+  var password = [];
+  for (var i = 0; i < num; i++) {
+    password.push(available[Math.floor(Math.random() * available.length)]);
+  } return password;
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -93,7 +150,7 @@ generateBtn.addEventListener("click", writePassword);
 //   var num = document.getElementById("number of characters").value;
 //   // var available = setAvail();
 //   var available = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-  
+
 
 //   function generatePassword() {
 //     var password = []
@@ -101,7 +158,7 @@ generateBtn.addEventListener("click", writePassword);
 //       password.push(available[Math.floor(Math.random() * available.length)]);
 //     } return password
 //   }
-  
+
 //   passwordText.value = password;
 //   // Add event listener to generate button
 //   generateBtn.addEventListener("click", writePassword);
