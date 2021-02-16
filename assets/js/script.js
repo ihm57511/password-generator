@@ -48,8 +48,9 @@ var passwordArray = [];
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// sewts character type availability based on user input
+// sets character type availability based on user input
 function setAvail() {
+
   function setLetters() {
     if (letterSet === 1) {
       available.unshift(letters)
@@ -79,26 +80,26 @@ function setAvail() {
   setSpecial()
   setUpper()
   
-  // console.log(available)
-  // console.log(numberSet)
-  // console.log(letterSet)
-  // console.log(upperSet)
-  // console.log(specialSet)
+  console.log(available)
+  console.log(letterSet)
+  console.log(numberSet)
+  console.log(specialSet)
+  console.log(upperSet)
 
   return
 }
 
 function setArray() {
+
   for (var i = 0; i < num; i++) {
     passwordArray.push(available[Math.floor(Math.random() * available.length)]);
-    // console.log(passwordArray);
+    console.log(passwordArray);
   } 
 }
 
 function generatePassword() {
   setAvail();
   setArray();
-  var pw = [];
   var password = [];
   
   for (var i = 0; i < num; i++) {
@@ -106,9 +107,7 @@ function generatePassword() {
     // console.log(password);
   }
   
-  var pw = password.toString();
-  // console.log(pw);
-  return pw;
+  return password.join("");
 }
 
 // Write password to the #password input
@@ -117,10 +116,12 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  passwordArray = [];
+  available = [];
 
 }
 
-// nOc.addEventListener("onchange", setNum());
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
