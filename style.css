@@ -97,18 +97,21 @@ button[disabled] {
   color: rgb(16, 117, 252);
 }
 
+#number-of-characters {
+  width: 280px;
+}
+
 #letters,
 #numbers,
 #special-characters,
 #upper-case {
   max-width: 34px;
-  margin-left: 340px;
 }
 
 .slidecontainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 .float-right {
