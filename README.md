@@ -14,4 +14,4 @@ This project was quite difficult to complete and I am sure there are much more e
 
 Application - https://ihm57511.github.io/password-generator/
 
-Repository - https://github.com/ihm57511/password-generatorgit status
+Repository - https://github.com/ihm57511/password-generatorgit 
