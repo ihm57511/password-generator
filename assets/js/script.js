@@ -21,21 +21,24 @@ slider.oninput = function () {
 
 // setting slider input for character type input
 var let = document.getElementById("letters");
-let.oninput = function () {
-  letterSet = this.value;
-}
+let.addEventListener("input", function () {
+  letterSet = let.value;
+})
+
 var numb = document.getElementById("numbers");
-numb.oninput = function () {
-  numberSet = this.value;
-}
+numb.addEventListener("input", function () {
+  numberSet = numb.value;
+})
+
 var spec = document.getElementById("special-characters");
-spec.oninput = function () {
-  specialSet = this.value;
-}
+spec.addEventListener("input", function () {
+  specialSet = spec.value;
+})
+
 var upp = document.getElementById("upper-case");
-upp.oninput = function () {
-  upperSet = this.value;
-}
+upp.addEventListener("input", function () {
+  upperSet = upp.value;
+})
 
 // setting vaiable arrrays for available types
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -44,43 +47,43 @@ var special = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
 var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var available = [];
 var passwordArray = [];
-
+var guar = []
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
 // sets character type availability based on user input
 function setAvail() {
-
-  function setLetters() {
-    if (letterSet === 1) {
-      available.unshift(letters)
-    }
+  if (let.checked) {
+    available.unshift(letters)
+    var index = Math.floor(Math.random() * letters.length)
+    var element = letters[index]
+    guar.push(element)
+    console.log(guar)
   }
-
-  function setNumbers() {
-    if (numberSet === 1) {
-      available.unshift(numbers)
-    }
-  }
-
-  function setSpecial() {
-    if (specialSet === 1) {
-      available.unshift(special)
-    }
-  }
-
-  function setUpper() {
-    if (upperSet === 1) {
-      available.unshift(upper)
-    }
-  }
-
-  setLetters()
-  setNumbers()
-  setSpecial()
-  setUpper()
   
-  console.log(available)
+  if (numb.checked) {
+    available.unshift(numbers)
+    var index = Math.floor(Math.random() * numbers.length)
+    var element = numbers[index]
+    guar.push(element)
+
+  }
+
+  if (spec.checked) {
+    available.unshift(special)
+    var index = Math.floor(Math.random() * special.length)
+    var element = special[index]
+    guar.push(element)
+  }
+
+  if (upp.checked) {
+    available.unshift(upper)
+    var index = Math.floor(Math.random() * upper.length)
+    var element = upper[index]
+    guar.push(element)
+  }
+
+  console.log(guar)
   console.log(letterSet)
   console.log(numberSet)
   console.log(specialSet)
@@ -94,19 +97,23 @@ function setArray() {
   for (var i = 0; i < num; i++) {
     passwordArray.push(available[Math.floor(Math.random() * available.length)]);
     console.log(passwordArray);
-  } 
+  }
 }
 
 function generatePassword() {
   setAvail();
   setArray();
   var password = [];
-  
+
   for (var i = 0; i < num; i++) {
     password.push(passwordArray[i][Math.floor(Math.random() * passwordArray[i].length)]);
     // console.log(password);
   }
-  
+
+  for (var i = 0; i < guar.length; i++) {
+    password[i] = guar[i]
+  }
+
   return password.join("");
 }
 
