@@ -125,6 +125,7 @@ function writePassword() {
   passwordText.value = password;
   passwordArray = [];
   available = [];
+  guar = []
 
 }
 
