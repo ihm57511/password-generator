@@ -51,8 +51,15 @@ var guar = []
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+function warning() {
+  alert("Please enter at least one type of character!");
+}
 // sets character type availability based on user input
 function setAvail() {
+  passwordArray = [];
+  available = [];
+  guar = [];
+
   if (let.checked) {
     available.unshift(letters)
     var index = Math.floor(Math.random() * letters.length)
@@ -83,6 +90,9 @@ function setAvail() {
     guar.push(element)
   }
 
+  if (!let.checked && !numb.checked && !spec.checked && !upp.checked) {
+    warning()
+  }
   console.log(guar)
   console.log(letterSet)
   console.log(numberSet)
@@ -123,9 +133,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  passwordArray = [];
-  available = [];
-  guar = []
 
 }
 
