@@ -53,6 +53,7 @@ var generateBtn = document.querySelector("#generate");
 
 function warning() {
   alert("Please enter at least one type of character!");
+  return;
 }
 // sets character type availability based on user input
 function setAvail() {
@@ -90,14 +91,12 @@ function setAvail() {
     guar.push(element)
   }
 
-  if (!let.checked && !numb.checked && !spec.checked && !upp.checked) {
-    warning()
-  }
-  console.log(guar)
-  console.log(letterSet)
-  console.log(numberSet)
-  console.log(specialSet)
-  console.log(upperSet)
+  
+  // console.log(guar)
+  // console.log(letterSet)
+  // console.log(numberSet)
+  // console.log(specialSet)
+  // console.log(upperSet)
 
   return
 }
@@ -106,12 +105,16 @@ function setArray() {
 
   for (var i = 0; i < num; i++) {
     passwordArray.push(available[Math.floor(Math.random() * available.length)]);
-    console.log(passwordArray);
+    // console.log(passwordArray);
   }
 }
 
 function generatePassword() {
   setAvail();
+  if (!let.checked && !numb.checked && !spec.checked && !upp.checked) {
+    warning()
+    return;
+  }
   setArray();
   var password = [];
 
@@ -132,7 +135,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value = password || "";
 
 }
 
